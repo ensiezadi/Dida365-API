@@ -1,0 +1,20 @@
+services:
+  dida-api:
+    build: .
+    container_name: dida-api
+    environment:
+      DIDA_CLIENT_ID: ${DIDA_CLIENT_ID:-}
+      DIDA_CLIENT_SECRET: ${DIDA_CLIENT_SECRET:-}
+      DIDA_REDIRECT_URI: ${DIDA_REDIRECT_URI:-http://localhost:8080/callback}
+      DIDA_WRAPPER_API_KEY: ${DIDA_WRAPPER_API_KEY:-}
+      DIDA_CALENDAR_FEED_TOKEN: ${DIDA_CALENDAR_FEED_TOKEN:-}
+      DIDA_CALENDAR_NAME: ${DIDA_CALENDAR_NAME:-Dida365 Tasks}
+      DIDA_DEFAULT_TIME_ZONE: ${DIDA_DEFAULT_TIME_ZONE:-Asia/Shanghai}
+      DIDA_TOKEN_FILE: ${DIDA_TOKEN_FILE:-/app/data/token.json}
+      HOST: ${HOST:-0.0.0.0}
+      PORT: ${PORT:-8080}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "dida365": {
+      "command": "python3",
+      "args": ["mcp_server.py"],
+      "env": {
+        "DIDA_WRAPPER_BASE_URL": "http://127.0.0.1:8080",
+        "DIDA_WRAPPER_API_KEY": "change-this-local-api-key",
+        "DIDA_CALENDAR_FEED_TOKEN": "change-this-calendar-feed-token"
+      }
+    }
+  }
+}
