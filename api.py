@@ -163,7 +163,12 @@ def task_to_ics_event(task, dtstamp):
         if due_date_time and due_date_time != start_date_time:
             lines.append(f"DTEND:{due_date_time}")
         elif start_date_time:
-            lines.append("DURATION:PT30M")
+            parsed_start = parse_dida_datetime(start)
+            if parsed_start:
+                if parsed_start.tzinfo is None:
+                    parsed_start = parsed_start.replace(tzinfo=timezone.utc)
+                fallback_end = parsed_start.astimezone(timezone.utc) + timedelta(minutes=30)
+                lines.append(f"DTEND:{fallback_end.strftime('%Y%m%dT%H%M%SZ')}")
 
     priority = task.get("priority")
     if priority is not None:
