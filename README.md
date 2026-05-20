@@ -24,7 +24,7 @@ This repository also includes a small Python wrapper for the Dida365 OpenAPI.
 python3 api.py
 ```
 
-Open `http://localhost:8080` once to authorize. After authorization, the access
+Open `http://127.0.0.1:8080` once to authorize. After authorization, the access
 token is saved to `data/token.json`.
 
 ### Run with Docker
@@ -41,7 +41,7 @@ Edit `.env`, then start the service:
 docker compose up --build
 ```
 
-Open `http://localhost:8080` once to authorize. The token is persisted through
+Open `http://127.0.0.1:8080` once to authorize. The token is persisted through
 the `./data:/app/data` volume.
 
 ### Call the Local API
@@ -49,14 +49,14 @@ the `./data:/app/data` volume.
 When `DIDA_WRAPPER_API_KEY` is set, send it as `X-API-Key`:
 
 ```bash
-curl http://localhost:8080/projects \
+curl http://127.0.0.1:8080/projects \
   -H "X-API-Key: change-this-local-api-key"
 ```
 
 Create a task:
 
 ```bash
-curl -X POST http://localhost:8080/tasks \
+curl -X POST http://127.0.0.1:8080/tasks \
   -H "Content-Type: application/json" \
   -H "X-API-Key: change-this-local-api-key" \
   -d '{"title":"Test task","content":"Created from local wrapper","timeZone":"Asia/Shanghai"}'
@@ -65,7 +65,7 @@ curl -X POST http://localhost:8080/tasks \
 List available wrapper routes:
 
 ```bash
-curl http://localhost:8080/routes \
+curl http://127.0.0.1:8080/routes \
   -H "X-API-Key: change-this-local-api-key"
 ```
 
@@ -82,11 +82,11 @@ DIDA_CALENDAR_NAME=Dida365 Tasks
 Then subscribe to this URL in Google Calendar:
 
 ```text
-http://localhost:8080/calendar.ics?token=change-this-calendar-feed-token
+http://127.0.0.1:8080/calendar.ics?token=change-this-calendar-feed-token
 ```
 
 For Google Calendar to refresh it automatically, the URL must be reachable by
-Google. That means `localhost` is only useful for local testing; for real
+Google. That means `127.0.0.1` is only useful for local testing; for real
 subscription sync, deploy the Docker service to a server and use an HTTPS URL:
 
 ```text

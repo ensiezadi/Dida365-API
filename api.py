@@ -12,7 +12,7 @@ from urllib.request import Request, urlopen
 
 CLIENT_ID = os.getenv("DIDA_CLIENT_ID", "")
 CLIENT_SECRET = os.getenv("DIDA_CLIENT_SECRET", "")
-REDIRECT_URI = os.getenv("DIDA_REDIRECT_URI", "http://localhost:8080/callback")
+REDIRECT_URI = os.getenv("DIDA_REDIRECT_URI", "http://127.0.0.1:8080/callback")
 API_KEY = os.getenv("DIDA_WRAPPER_API_KEY", "")
 CALENDAR_FEED_TOKEN = os.getenv("DIDA_CALENDAR_FEED_TOKEN", "")
 CALENDAR_NAME = os.getenv("DIDA_CALENDAR_NAME", "Dida365 Tasks")
