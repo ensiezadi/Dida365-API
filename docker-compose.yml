@@ -14,7 +14,7 @@ services:
       HOST: ${HOST:-0.0.0.0}
       PORT: ${PORT:-8080}
     ports:
-      - "8080:8080"
+      - "100.82.66.19:8080:8080"
     volumes:
       - ./data:/app/data
     restart: unless-stopped
